@@ -7,34 +7,37 @@ import AddTask from './components/AddTask';
 const App = () => {
   const [tasks, setTasks] = useState([
     {
-      id: '1',
-      title: 'Estudar Programação',
+      title: 'Teste',
+      id: 1,
       completed: false,
-    },
-    {
-      id: '2',
-      title: 'Estudar Inglês',
-      completed: true,
-    },
+    }
   ]);
-
+  
+  // tasks.id = "0"
+  
   const handleTaskAddition = taskTitle => {
     const newTasks = [
       ...tasks,
       {
         title: taskTitle,
-        id: Math.random(10),
+        id: uuidv4,
         completed: false,
       },
     ];
     setTasks(newTasks);
   };
 
+  const handleTaskRemove = taskId => {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+
+    setTasks(newTasks);
+  };
+
   return (
     <>
       <div className="container">
-        <AddTask handleTaskAddition={handleTaskAddition} />
-        <Tasks tasks={tasks} />
+        <AddTask handleTaskAddition={handleTaskAddition}/>
+        <Tasks tasks={tasks} handleTaskRemove={handleTaskRemove}  />
       </div>
     </>
   );
