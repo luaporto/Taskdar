@@ -20,7 +20,7 @@ const App = () => {
       ...tasks,
       {
         title: taskTitle,
-        id: uuidv4,
+        id: Math.round(Math.random(10) * 10000),
         completed: false,
       },
     ];
