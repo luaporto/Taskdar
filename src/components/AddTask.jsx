@@ -12,8 +12,13 @@ const AddTask = ({ handleTaskAddition }) => {
   };
 
   const handleAddTaskClick = () => {
+    if (inputData === '') {
+      return;
+    }
+
     handleTaskAddition(inputData);
     setInputData('');
+    
   };
 
   return (

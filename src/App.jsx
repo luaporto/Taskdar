@@ -9,14 +9,9 @@ import AddTask from './components/AddTask';
 const App = () => {
   const [tasks, setTasks] = useState([
     {
-      id: '1',
-      title: 'Estudar Programação',
+      title: 'Teste',
+      id: 1,
       completed: false,
-    },
-    {
-      id: '2',
-      title: 'Estudar Inglês',
-      completed: true,
     },
   ]);
 
@@ -41,11 +36,21 @@ const App = () => {
     setTasks(newTasks);
   };
 
+  const handleTaskRemove = taskId => {
+    const newTasks = tasks.filter(task => task.id !== taskId);
+
+    setTasks(newTasks);
+  };
+
   return (
     <>
       <div className="container">
         <AddTask handleTaskAddition={handleTaskAddition} />
-        <Tasks tasks={tasks} handleTaskClick={handleTaskClick} />
+        <Tasks
+          tasks={tasks}
+          handleTaskClick={handleTaskClick}
+          handleTaskRemove={handleTaskRemove}
+        />
       </div>
     </>
   );
