@@ -5,15 +5,10 @@ import Tasks from './components/Tasks';
 
 import './App.css';
 import AddTask from './components/AddTask';
+import TopBar from './components/TopBar';
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      title: 'Teste',
-      id: 1,
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const handleTaskClick = taskId => {
     const newTasks = tasks.map(task => {
@@ -44,6 +39,7 @@ const App = () => {
 
   return (
     <>
+      <TopBar />
       <div className="container">
         <AddTask handleTaskAddition={handleTaskAddition} />
         <Tasks
